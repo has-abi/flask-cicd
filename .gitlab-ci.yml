@@ -1,0 +1,36 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+
+stages:
+  build
+  lint
+  test
+
+before_script:
+  - "pip install pipenv"
+
+build:
+  image: python:3.10-slim-buster
+  stage: build
+  script: 
+    - "pipenv install --system --deploy --ignore-pipfile"
+
+lint:
+  image: python:3.10-slim-buster
+  stage: lint
+  script:
+    - "pipenv install --dev --system --deploy --ignore-pipfile"
+    - "python -m black --check src tests"
+    - "python -m pylint src tests"
+
+test:
+  image: python:3.10-slim-buster
+  stage: test
+  script:
+    - "python manage.py test"
+    - "python manage.py cov"

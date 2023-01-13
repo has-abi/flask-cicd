@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   flask_cicd:
-    image: flask_cid:latest
+    image: flask_cicd:latest
     container_name: flask_cicd
     restart: always
     build:
