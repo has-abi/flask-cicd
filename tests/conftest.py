@@ -1,3 +1,8 @@
+__doc__ = """
+Pytest config module
+"""
+
+
 import pytest
 
 from src.app import app
@@ -11,6 +16,6 @@ def test_app():
 
 
 @pytest.fixture
-def client(test_app):
+def client(client_app):
     """Get app test client"""
-    return test_app.test_client()
+    return client_app.test_client()

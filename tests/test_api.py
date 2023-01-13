@@ -1,3 +1,8 @@
+__doc__ = """
+Test api module
+"""
+
+
 from urllib.parse import urlencode
 
 

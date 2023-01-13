@@ -1,3 +1,8 @@
+__doc__ = """
+Main app module
+"""
+
+
 import re
 
 from flask import Flask, jsonify, request

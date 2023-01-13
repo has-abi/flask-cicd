@@ -1,5 +1,11 @@
+__doc__="""
+Test config module
+"""
+
+
 from src.app import app
 
 
 def test_config():
-    assert app.config["TESTING"] == True
+    """Test config"""
+    assert app.config["TESTING"] is True
