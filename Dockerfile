@@ -18,6 +18,3 @@ RUN pipenv install --system --deploy --ignore-pipfile
 
 # Add app
 COPY . /usr/src/app
-
-# Run
-CMD gunicorn --bind 0.0.0.0:5000 manage:app
