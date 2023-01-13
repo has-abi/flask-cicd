@@ -8,7 +8,7 @@ import pytest
 from src.app import app
 
 
-@pytest.fixture
+@pytest.fixture(name="testing_app")
 def test_app():
     """Config app for testing"""
     app.config.update({"TESTING": True})
@@ -16,6 +16,6 @@ def test_app():
 
 
 @pytest.fixture
-def client(client_app):
+def client(testing_app):
     """Get app test client"""
-    return client_app.test_client()
+    return testing_app.test_client()
