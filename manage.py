@@ -24,13 +24,12 @@ def cov():
     if pytest_result == 0:
         app_cov.stop()
         app_cov.save()
-        app.logger.info("Coverage summary:")
+        app.logger.info("Coverage summary:")  # pylint ignore
         app_cov.report()
         app_cov.html_report()
         app_cov.erase()
         return 0
-    else:
-        return 1
+    return 1
 
 
 if __name__ == "__main__":
