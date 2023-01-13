@@ -7,9 +7,9 @@ variables:
   DOCKER_DRIVER: overlay
 
 stages:
-  build
-  lint
-  test
+  - build
+  - lint
+  - test
 
 before_script:
   - "pip install pipenv"
