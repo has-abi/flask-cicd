@@ -12,8 +12,9 @@ stages:
   - test
   - dockerbuild
 
-before_script:
-  - "pip install pipenv"
+default:
+  before_script:
+    - "pip install pipenv"
 
 build:
   image: python:3.10-slim-buster
@@ -38,7 +39,7 @@ test:
 
 dockerbuild:
   inherit:
-    before_script: false
+    default: false
   image: docker:dind
   stage: dockerbuild
   services:
