@@ -37,6 +37,8 @@ test:
     - "python manage.py cov"
 
 dockerbuild:
+  inherit:
+    before_script: false
   image: docker:dind
   stage: dockerbuild
   services:
