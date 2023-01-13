@@ -20,4 +20,4 @@ RUN pipenv install --system --deploy --ignore-pipfile
 COPY . /usr/src/app
 
 # Run
-CMD python ./manage.py run -h 0.0.0.0 -p 5000
+CMD gunicorn --bind 0.0.0.0:5000 manage:app
