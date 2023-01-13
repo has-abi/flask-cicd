@@ -32,5 +32,6 @@ test:
   image: python:3.10-slim-buster
   stage: test
   script:
+    - "pipenv install --system --deploy --ignore-pipfile"
     - "python manage.py test"
     - "python manage.py cov"
