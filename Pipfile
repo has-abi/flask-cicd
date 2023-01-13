@@ -8,6 +8,7 @@ flask = "*"
 gunicorn = "*"
 pytest = "*"
 coverage = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"
