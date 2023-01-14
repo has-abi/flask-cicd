@@ -55,3 +55,23 @@ jobs:
       - name: Run tests
         run: |
           python manage.py cov
+          
+  build_and_push_docker_image:
+    name: Build Push Docker image to registry
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker images
+        run: |
+          docker build -f ./Dockerfile -t ${{ env.REGISTRY }}/${{ github.repository }}:latest .
+          docker push ${{ env.REGISTRY }}/${{ github.repository }}:latest
