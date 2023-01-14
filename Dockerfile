@@ -6,14 +6,11 @@ WORKDIR /usr/src/app
 # Install pipenv and compilation dependencies
 RUN pip install pipenv
 
-# COPY python dependencies
+# COPY dependencies
 COPY ./Pipfile /usr/src/app/Pipfile
 COPY ./Pipfile.lock /usr/src/app/Pipfile.lock
 
-# Install python dependencies
-RUN pipenv install --system --deploy --ignore-pipfile
-
-# Install python dependencies
+# Install dependencies
 RUN pipenv install --system --deploy --ignore-pipfile
 
 # Add app
